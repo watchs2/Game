@@ -46,8 +46,11 @@ if(game->state==0){
 void UnLoadGameTextures(Game* game){
     for(int i=0;i<game->textureManager.count;i++){
         UnloadTexture(game->textureManager.arrayTexture[i].texture);
-        
+        game->textureManager.arrayTexture[i].xPosition = 0.0f;
+        game->textureManager.arrayTexture[i].yPosition = 0.0f;
+        game->textureManager.arrayTexture[i] = (Textures){0};
     }
+    game->textureManager.count = 0;
 }
 
 void Render(Game* game){
@@ -55,7 +58,11 @@ for(int i=0;i<game->textureManager.count;i++){
         DrawTexture(game->textureManager.arrayTexture[i].texture,game->textureManager.arrayTexture[i].xPosition,game->textureManager.arrayTexture[i].yPosition,WHITE);
 }
 }
+//Animations
 
+void Animation(Textures* obj,void(*animationFun)(Textures* obj)){
+    animationFun(obj);
+}
 void skyAnimation(Textures* obj){
     if(obj->xPosition>=-0.10){
         obj->xPosition=-800;

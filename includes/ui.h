@@ -11,7 +11,8 @@ void Render(Game* game); //organizar no jogo o que fica à frente e o que fica a
 
 //animation
 
-bool Anim(Textures* obj, void (*fun_ptr)(Texture2D*));
+
+void Animation(Textures* obj,void(*animationFun)(Textures* obj));
 void resetAnim(Game* game);
 //animation functions
 void hoverAnimation(Textures* obj);

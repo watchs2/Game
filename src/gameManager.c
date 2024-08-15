@@ -14,7 +14,7 @@ void UpdateGame(Game *game) {
     if (game->state == 0) {
         // Lógica para quando o jogo não está iniciado
         //GetMouseX()
-        skyAnimation(&(game->textureManager.arrayTexture[0]));//animações devem ser na anim
+       
         hoverEvent(game);
         clickEvent(game);
 
@@ -22,6 +22,7 @@ void UpdateGame(Game *game) {
         // Lógica para quando o jogo está em andamento
     } else if (game->state == -1) {
         // Lógica para quando o jogo terminou
+        printf("Game End");
     }
 }
 
@@ -29,33 +30,40 @@ void DrawGame(Game *game) {
     // Desenhe o jogo na tela com base no estado atual
     if(game->textureManager.count==0)
         LoadGameTextures(game);
+    Animation(&(game->textureManager.arrayTexture[0]),skyAnimation);
     Render(game);
 }
 
 void hoverEvent(Game *game){
      if (GetMouseX() >= 279 && GetMouseX() <= 524 && GetMouseY() >= 230 && GetMouseY() <= 290) { // Cursor no Play
            //clicou play
-          hoverAnimation(&(game->textureManager.arrayTexture[2]));
+          //hoverAnimation(&(game->textureManager.arrayTexture[2]));
+          Animation(&(game->textureManager.arrayTexture[2]),hoverAnimation);
         }else if (GetMouseX() >= 50 && GetMouseX() <= 105 && GetMouseY() >= 400 && GetMouseY() <= 453){ // Cursor nas Configurações
           //clicou em settings
-          hoverAnimation(&(game->textureManager.arrayTexture[4]));
+           Animation(&(game->textureManager.arrayTexture[4]),hoverAnimation);
         } else if (GetMouseX() >= 700 && GetMouseX() <= 755 && GetMouseY() >= 400 && GetMouseY() <= 453) { // Cursor nas Informações
           //clicou em info
-          hoverAnimation(&(game->textureManager.arrayTexture[1]));
+          Animation(&(game->textureManager.arrayTexture[1]),hoverAnimation);
+          
         } else if (GetMouseX() >= 279 && GetMouseX() <= 524 && GetMouseY() >= 311 && GetMouseY() <= 371) { // Cursor em Sair
          //clicou em sair
-          hoverAnimation(&(game->textureManager.arrayTexture[3]));
+          Animation(&(game->textureManager.arrayTexture[3]),hoverAnimation);
         }else{
             resetAnim(game);
         }
 
 }
 
-void clickEvent(){
+void clickEvent(Game *game){
      if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         if (GetMouseX() >= 279 && GetMouseX() <= 524 && GetMouseY() >= 230 && GetMouseY() <= 290) { // Cursor no Play
            //clicou play
            printf("Play\n");
+           game->state=1;
+           UnLoadGameTextures(game);
+           // dar clear a tudo
+
 
         }else if (GetMouseX() >= 50 && GetMouseX() <= 105 && GetMouseY() >= 400 && GetMouseY() <= 453){ // Cursor nas Configurações
           //clicou em settings
@@ -66,6 +74,7 @@ void clickEvent(){
         } else if (GetMouseX() >= 279 && GetMouseX() <= 524 && GetMouseY() >= 311 && GetMouseY() <= 371) { // Cursor em Sair
          //clicou em sair
           printf("Quit\n");
+          game->state=-1;
         }
     }
 }

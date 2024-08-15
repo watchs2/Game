@@ -16,7 +16,7 @@ int main() {
     while (!WindowShouldClose()) {
         // Atualize o estado do jogo
         UpdateGame(&game);
-
+        if(game.state==-1){break;}
         BeginDrawing();
         ClearBackground(BLACK);
 

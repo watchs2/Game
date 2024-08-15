@@ -11,9 +11,14 @@
 #define LARGURA 800
 #define MAX_TEXTURES 100
 
+typedef struct{
+    Texture2D texture;
+    float xPosition;
+    float yPosition;
+}Textures;
+
 typedef struct TextureManager {
-    Texture2D textures[MAX_TEXTURES];
-    char* textureNames[MAX_TEXTURES];
+    Textures arrayTexture[MAX_TEXTURES];
     int count;
 } TextureManager;
 
@@ -21,7 +26,7 @@ typedef struct TextureManager {
 typedef struct Game {
     int state; // 0-> Game Not Started, 1-> Game Started, -1-> End Game
     // Adicione outros dados relacionados ao jogo aqui
-    TextureManager* textureManager;
+    TextureManager textureManager;
 } Game;
 
 typedef struct{

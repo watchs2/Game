@@ -1,6 +1,7 @@
 /*MAIN*/
 
 #include "..\includes\gameManager.h"
+#include "..\includes\ui.h"
 
 
 int main() {
@@ -27,6 +28,6 @@ int main() {
 
     // Feche a janela
     CloseWindow();
-
+    UnLoadGameTextures(&game);
     return 0;
 }

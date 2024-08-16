@@ -27,6 +27,7 @@ typedef struct Game {
     int state; // 0-> Game Not Started, 1-> Game Started, -1-> End Game
     // Adicione outros dados relacionados ao jogo aqui
     TextureManager textureManager;
+    Player player;
 } Game;
 
 typedef struct{

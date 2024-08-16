@@ -38,9 +38,13 @@ if(game->state==0){
     game->textureManager.arrayTexture[5].xPosition=211;
     game->textureManager.arrayTexture[5].yPosition=70;
 
-}else{
-
-}
+}else if(game->state==1){
+    printf("Loading Game Textures\n");
+     game->textureManager.arrayTexture[0].texture= LoadTexture("C:/Users/ruben/projetos/NewProjects/Game/assets/background.png");
+     game->textureManager.arrayTexture[0].texture.width*= 2;
+     game->textureManager.arrayTexture[0].texture.height*= 2;
+     game->textureManager.count=1;
+}  
 
 }
 void UnLoadGameTextures(Game* game){
@@ -82,7 +86,18 @@ void hoverAnimation(Textures* obj){
     }
 
 }
+void A_MovingAnimation(){
 
+}
+void W_MovingAnimation(){
+
+}
+void S_MovingAnimation(){
+
+}
+void D_MovingAnimation(){
+
+}
 void resetAnim(Game* game){
 
      game->textureManager.arrayTexture[1].texture.width= 53;

@@ -14,12 +14,15 @@ void UpdateGame(Game *game) {
     if (game->state == 0) {
         // Lógica para quando o jogo não está iniciado
         //GetMouseX()
-       
+        Animation(&(game->textureManager.arrayTexture[0]),skyAnimation);
         hoverEvent(game);
         clickEvent(game);
 
     } else if (game->state == 1) {
         // Lógica para quando o jogo está em andamento
+        HandleInput(game);
+        
+
     } else if (game->state == -1) {
         // Lógica para quando o jogo terminou
         printf("Game End");
@@ -30,7 +33,6 @@ void DrawGame(Game *game) {
     // Desenhe o jogo na tela com base no estado atual
     if(game->textureManager.count==0)
         LoadGameTextures(game);
-    Animation(&(game->textureManager.arrayTexture[0]),skyAnimation);
     Render(game);
 }
 
@@ -79,4 +81,14 @@ void clickEvent(Game *game){
     }
 }
 
-
+void HandleInput(Game *game){
+    if (IsKeyDown(KEY_W)) {
+      
+    } else if (IsKeyDown(KEY_S)) {
+        
+    } else if (IsKeyDown(KEY_A)) {
+      
+    } else if (IsKeyDown(KEY_D)) {
+     
+    }
+}

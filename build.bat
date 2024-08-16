@@ -20,7 +20,7 @@ cd /d %~dp0
 
 REM Comando de compilação
 echo Compilando o projeto...
-%CC% %CFLAGS% -o main.exe src/main.c src/gameManager.c src/menu.c src/ui.c %LDFLAGS%
+%CC% %CFLAGS% -o main.exe src/main.c src/gameManager.c src/ui.c %LDFLAGS%
 
 REM Mensagem de conclusão
 echo Projeto compilado com sucesso!
